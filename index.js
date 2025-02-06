@@ -1,8 +1,10 @@
 import dotenv from 'dotenv'
 
+
 dotenv.config()
 
 import { Client, GatewayIntentBits } from 'discord.js'
+
 
 const client = new Client({
   intents: [
@@ -13,11 +15,20 @@ const client = new Client({
   ],
 })
 
-client.login(process.env.DISCORD_TOKENS)
+try {
 
-client.on('messageCreate', async (message) => {
-  console.log(message)
-  if (!message.author.bot) {
-    message.author.send(`Echo ${message.content}`)
-  }
-})
+  client.login(process.env.DISCORD_TOKENS).then(r=>console.log(r,'logged'))
+
+
+}
+catch(error){
+  console.log("Error:",error)
+}
+
+
+// client.on('messageCreate', async (message) => {
+//   console.log(message)
+//   if (!message.author.bot) {
+//     message.author.send(`Echo ${message.content}`)
+//   }
+// })
