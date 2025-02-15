@@ -14,9 +14,7 @@ const client = new Client({
 })
 
 try {
-    client
-        .login(process.env.DISCORD_TOKENS)
-        .then((r) => console.log(r, 'logged'))
+    client.login(process.env.DISCORD_TOKENS).then((r) => console.log('logged'))
 } catch (error) {
     console.log('Error:', error)
 }
@@ -31,9 +29,8 @@ client.on('interactionCreate', (interaction) => {
     }
 })
 
-// client.on('messageCreate', async (message) => {
-//   console.log(message)
-//   if (!message.author.bot) {
-//     message.author.send(`Echo ${message.content}`)
-//   }
-// })
+client.on('messageCreate', async (message) => {
+    if (!message.author.bot) {
+        //message.author.send(`Echo ${message.content}`)
+    }
+})
